@@ -1,14 +1,17 @@
-const router = require("express").Router();
+import Router from "express";
+import { getProducts, getProductById, createProduct, deleteProduct, updateProduct } from "./productsController";
 
-router.get("/",(req, res) => {});
 
-router.get("/:id", (req, res) => {});
+const router = Router();
 
-router.post("/", (req, res) => {});
+router.get("/", getProducts);
 
-router.delete("/:id",(req,res)=>{})
+router.get("/:id", getProductById);
 
-router.patch("/:id",(req,res)=>{})
+router.post("/",createProduct);
 
+router.delete("/:id", deleteProduct);
+
+router.put("/:id", updateProduct);
 
 export default router;
