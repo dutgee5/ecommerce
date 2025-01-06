@@ -8,6 +8,13 @@
       "when": 1736148184906,
       "tag": "0000_brown_living_lightning",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1736153070719,
+      "tag": "0001_simple_forge",
+      "breakpoints": true
     }
   ]
 }

@@ -1,11 +1,11 @@
 {
-  "id": "6c0e9a6f-1e9d-4922-9f3a-b238ff6dce83",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "7964a741-71f9-49a6-afc4-2d84d517f9a0",
+  "prevId": "6c0e9a6f-1e9d-4922-9f3a-b238ff6dce83",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.products": {
-      "name": "products",
+    "public.product": {
+      "name": "product",
       "schema": "",
       "columns": {
         "id": {
@@ -15,7 +15,7 @@
           "notNull": true,
           "identity": {
             "type": "always",
-            "name": "products_id_seq",
+            "name": "product_id_seq",
             "schema": "public",
             "increment": "1",
             "startWith": "1",
