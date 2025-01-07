@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { db } from "../../db/index";
-import { productsTable } from "../../db/productsSchema";
+import { createProductSchema, productsTable } from "../../db/productsSchema";
 import { eq } from "drizzle-orm";
 
 export async function getProducts(req: Request, res: Response) {
@@ -33,7 +33,7 @@ export async function createProduct(req: Request, res: Response) {
     // try to insert into products values (req.body) returning *;
     const [product] = await db
       .insert(productsTable)
-      .values(req.body)
+      .values(req.cleanBody)
       .returning(); // insert into products values (req.body) returning *;
     res.status(201).json(product);
   } catch (err) {
