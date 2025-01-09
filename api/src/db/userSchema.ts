@@ -13,7 +13,7 @@ export const usersTable = pgTable("users", {
 });
 
 export const createUserSchema = createInsertSchema(usersTable).omit({
-  id: true, // true olmasının sebebi id'nin olmaması gerektiğinden yani id'nin otomatik oluşturulması gerektiğinden
+  id: true as never, // true olmasının sebebi id'nin olmaması gerektiğinden yani id'nin otomatik oluşturulması gerektiğinden
   role: true,
 });
 

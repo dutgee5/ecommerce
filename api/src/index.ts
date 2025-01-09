@@ -1,7 +1,7 @@
 import express, { urlencoded } from "express";
 import { json } from "express"; // import json from express
-import productsRouter from "./routers/products/products";
-import authRouter from "./routers/auth/authentication";
+import productsRouter from "./routers/products/products.js";
+import authRouter from "./routers/auth/authentication.js";
 
 const app = express();
 const port = 5000;

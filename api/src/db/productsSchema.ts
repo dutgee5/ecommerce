@@ -16,9 +16,9 @@ export const productsTable = pgTable("product", {
 });
 
 export const createProductSchema = createInsertSchema(productsTable).omit({
-  id: true,
+  id: true as never, // true olmasının sebebi id'nin olmaması gerektiğinden yani id'nin otomatik oluşturulması gerektiğinden
 });
 
 export const updateProductSchema = createInsertSchema(productsTable)
-  .omit({ id: true })
+  .omit({ id: true as never })
   .partial();
