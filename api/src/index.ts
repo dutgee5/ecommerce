@@ -2,6 +2,7 @@ import express, { urlencoded } from "express";
 import { json } from "express"; // import json from express
 import productsRouter from "./routers/products/products.js";
 import authRouter from "./routers/auth/authentication.js";
+import ordersRouter from "./routers/orders/orders.js";
 import serverless from "serverless-http";
 
 const app = express();
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/products", productsRouter);
 app.use("/auth", authRouter);
+app.use("/orders",ordersRouter);
 
 if (process.env.NODE_ENV === "dev") {
   app.listen(port, () => {
