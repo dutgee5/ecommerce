@@ -2,6 +2,7 @@ import express, { urlencoded } from "express";
 import { json } from "express"; // import json from express
 import productsRouter from "./routers/products/products.js";
 import authRouter from "./routers/auth/authentication.js";
+import serverless from "serverless-http";
 
 const app = express();
 const port = 5000;
@@ -16,6 +17,9 @@ app.get("/", (req, res) => {
 app.use("/products", productsRouter);
 app.use("/auth", authRouter);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+if (process.env.NODE_ENV === "dev") {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
+export const handler = serverless(app);
