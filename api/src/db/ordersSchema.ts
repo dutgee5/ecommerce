@@ -5,8 +5,8 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-import { usersTable } from "./userSchema";
-import { productsTable } from "./productsSchema";
+import { usersTable } from "./userSchema.js";
+import { productsTable } from "./productsSchema.js";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
