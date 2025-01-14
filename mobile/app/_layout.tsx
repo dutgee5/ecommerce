@@ -5,7 +5,7 @@ import "@/global.css";
 import { useCart } from "@/store/cartStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Link, Stack } from "expo-router";
-import { ShoppingCart } from "lucide-react-native";
+import { ShoppingCart, User } from "lucide-react-native";
 import { Pressable } from "react-native";
 
 const queryClient = new QueryClient();
@@ -18,6 +18,7 @@ export default function RootLayout() {
       <GluestackUIProvider>
         <Stack
           screenOptions={{
+            headerTitleAlign: "center",
             headerRight: () =>
               cartItemsNumber > 0 && (
                 <Link href={"/cart"} asChild>
@@ -27,6 +28,13 @@ export default function RootLayout() {
                   </Pressable>
                 </Link>
               ),
+            headerLeft: () => (
+              <Link href={"/login"} asChild>
+                <Pressable className="flex-row gap-2">
+                  <Icon as={User} />
+                </Pressable>
+              </Link>
+            ),
           }}
         >
           <Stack.Screen name="index" options={{ title: "Shop" }} />
