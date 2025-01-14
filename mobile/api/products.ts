@@ -17,6 +17,5 @@ export async function getProductById(id: number) {
   if (!res.ok) {
     throw new Error("Error");
   }
-  console.log(data);
   return data;
 }
