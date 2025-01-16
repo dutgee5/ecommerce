@@ -5,17 +5,38 @@ import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Redirect } from "expo-router";
+import { useMutation } from "@tanstack/react-query";
+import { createOrder } from "@/api/orders";
 
 export default function CartScreen() {
   const items = useCart((state) => state.items);
   const resetCart = useCart((state) => state.resetCart);
 
+  const createOrderMutation = useMutation({
+    mutationFn: () =>
+      createOrder(
+        items.map((item) => ({
+          productId: item.product.id,
+          quantity: item.quantity,
+          price: item.product.price, // managge form server
+        }))
+      ),
+    onSuccess: (data) => {
+      console.log(data);
+
+      resetCart();
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const onCheckOut = async () => {
+    createOrderMutation.mutate();
     // send items to the server
-    resetCart();
   };
 
-  if(items.length === 0) {
+  if (items.length === 0) {
     return <Redirect href={"/"} />;
   }
 
